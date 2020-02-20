@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    database:
+        image: mariadb:10.4.12
+        environment: 
+            - MYSQL_ROOT_PASSWORD=nathan
+            - MYSQL_DATABASE=factures
+            - MYSQL_USER=LaTeam
+            - MYSQL_PASSWORD=tortue
+        ports:
+            - 3306:3306
+        expose:
+            - 3306
+        container_name: db
+        restart: unless-stopped
+        volumes: 
+            - ".:/home"
