@@ -12,7 +12,6 @@ services:
             - ${DB_PORT}:3306
         container_name: ${DB_CONTAINER_NAME}
         restart: unless-stopped
-        command: >
-            sh -c "mysql -u ${DB_USER} ${DB_NAME} --password=${DB_PASSWORD} < /home/data_db/setup.sql
-            
-            "
+        volumes: 
+            - ./data_db/:/${DB_DATA}/
+            - ./utils/:/utils/
