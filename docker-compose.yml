@@ -1,18 +1,14 @@
-version: '3'
+version: '3.7'
 
 services:
     database:
-        image: mariadb:10.4.12
+        image: mariadb:${DB_VERSION}
         environment: 
-            - MYSQL_ROOT_PASSWORD=nathan
-            - MYSQL_DATABASE=factures
-            - MYSQL_USER=LaTeam
-            - MYSQL_PASSWORD=tortue
+            - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+            - MYSQL_DATABASE=${DB_NAME}
+            - MYSQL_USER=${DB_USER}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
         ports:
-            - 3306:3306
-        expose:
-            - 3306
-        container_name: db
+            - ${DB_PORT}:3306
+        container_name: ${DB_CONTAINER_NAME}
         restart: unless-stopped
-        volumes: 
-            - ".:/home"
